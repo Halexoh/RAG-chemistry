@@ -1,0 +1,184 @@
+{
+  "summary": {
+    "n_in_domain": 10,
+    "n_out_of_domain": 5,
+    "keyword_hit_rate": 1.0,
+    "book_hit_rate": 0.9,
+    "citation_validity_rate": 0.9,
+    "out_of_domain_refusal_rate": 1.0,
+    "out_of_domain_fabricated_citation_rate": 0.4,
+    "avg_latency_seconds": 44.43
+  },
+  "records": [
+    {
+      "query": "What is polyurea used for in protective coatings?",
+      "in_domain": true,
+      "answer": "Polyurea is used in protective coatings due to its rapid curing ability, chemical resistance, and excellent weathering characteristics [Coatings Materials and Surface Coatings, Chapter 7, p. 1-2]. It can be sprayed on damp or wet surfaces without adverse effects on performance [Coatings Materials and Surface Coatings, Chapter 7, p. 3-4], making it suitable for various applications where quick application is necessary [Coatings Materials and Surface Coatings, Chapter 7, p. 1-2].",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 35.96,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es el Parylene y para qué se usa como recubrimiento?",
+      "in_domain": true,
+      "answer": "El parylene es una familia de polímeros lineales, de alta molecular peso, compuestos únicamente por átomos de carbono y hidrógeno. Se aplica en forma de recubrimiento a través del proceso de depósito por polimerización gaseosa (VDP), donde el monómero paracilofánico de metilbenzene (DPX) se transforma directamente en una capa sólida sin pasar por un estado líquido intermedio. Este proceso produce recubrimientos con una uniformidad excepcional en espesor y continuidad, sin necesidad de curado postdepósito.\n\nEl parylene se utiliza principalmente en aplicaciones electrónicas debido a su bajo constante dielectrica y independiente del frecuencia [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3]. Además, es utilizado como material de recubrimiento para circuitos impresos militares, donde tiene una buena resistencia al entorno atmosférico en condiciones específicas [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 39.38,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What are thermoplastic elastomers?",
+      "in_domain": true,
+      "answer": "Thermoplastic elastomers (TPEs) are materials that can be processed in the same manner as conventional thermoplastics but provide finished articles with properties similar to those of a thermoset rubber [Coatings Materials and Surface Coatings, Chapter 10, p. 1-2]. They typically consist of a chemically cross-linked rubber phase dispersed within a continuous matrix of thermoplastic material [Coatings Materials and Surface Coatings, Chapter 10, p. 1].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 32.42,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué función cumple un primer en un sistema de recubrimiento?",
+      "in_domain": true,
+      "answer": "Un primer es fundamental en un sistema de recubrimientos porque proporciona una base sólida para los capas superiores, y a menudo tiene propiedades específicas que ayudan a mejorar el adhesión del topcoat al substrate [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 830-831]. Sin embargo, la información proporcionada no detalla explícitamente las funciones específicas del primer en un sistema de recubrimiento, por lo que no puedo citar una función específica a partir de los fragmentos dados.",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 45.93,
+      "keyword_hit": true,
+      "book_hit": false,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is a zinc-rich coating used for?",
+      "in_domain": true,
+      "answer": "Zinc-rich coatings are used to prevent corrosion galvanically by acting as the anode of an electrochemical cell, with the steel substrate serving as the cathode [Coatings Materials and Surface Coatings, Chapter 57, p. 8]. They provide sacrificial protection over the long term where sufficient zinc remains in the film [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 824-825]. These coatings are particularly suitable for environments that are neutral or mildly corrosive, such as Environmental Zones 3B (chemical, neutral) [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 793]. They are widely employed in situations where zinc corrosion product is not easily dissolved, like in neutral environments [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 824-825].",
+      "n_sources": 5,
+      "n_citations": 4,
+      "is_refusal": false,
+      "elapsed_seconds": 56.32,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es la corrosión por picadura?",
+      "in_domain": true,
+      "answer": "La corrosión por picadura es un tipo de corrosión localizada que se caracteriza por la formación de cavidades o \"huesos\" en el material [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 343-345]. Estas cavidades pueden tener diferentes formas, como boca abierta (sin cubrir) o cubiertas con una membrana semipermeable de productos de corrosión [idem, p. 345-346]. Esta forma de corrosión es considerada más peligrosa que la corrosión uniforme porque es difícil detectarla, predecirla y diseñar medidas contra ella [idem, p. 343-345].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 49.35,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is cathodic protection?",
+      "in_domain": true,
+      "answer": "Cathodic protection (CP) is a technique that minimizes anodic dissolution by applying a cathodic current to a protected structure. The basic principle involves polarizing the rebar or other metal components of a structure to a cathodic potential, thereby reducing corrosion [Handbook of Corrosion Engineering, 11.1 p. 863-864]. This is often achieved through either sacrificial anodes or impressed current systems [ibid, 11.2 pp. 871-879].\n\nIn CP, electrons are supplied to the structure by a cathode (protected metal) and an anode (sacrificial material), forming a galvanic cell where the anode is consumed rather than the protected structure [Handbook of Corrosion Engineering, 11.2 p. 873]. The CP current can be managed in two modes: constant-current or constant-voltage, each with its own method to ensure protection criteria are met [ibid, 11.2 pp. 874-875].\n\nCP is particularly useful for existing structures where coatings might not provide sufficient protection alone [Handbook of Corrosion Engineering, 11.1 p. 863]. It can be applied to various materials like steel rebar in concrete or buried metals such as pipelines and tanks [ibid, 11.2 pp. 874-875].\n\nFor reinforced concrete structures, CP helps manage risks associated with chloride ions and sulfate ions that can attack the concrete and its reinforcing steel [Handbook of Corrosion Engineering, 2. Environments p. 164-165].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 63.19,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es la corrosión galvánica?",
+      "in_domain": true,
+      "answer": "La corrosión galvánica ocurre cuando se usan materiales metálicos de diferentes potenciales electroquímicos en un medio conductor, lo que provoca que el material más anódico corra preferentemente. Por ejemplo, el aluminio puede corroerse preferencialmente frente a otros metales como la acero inoxidable, el cobre y el níquel [Handbook of Corrosion Engineering, 8. Materials Selection, p. 610].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 43.42,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What causes stress corrosion cracking?",
+      "in_domain": true,
+      "answer": "Stress corrosion cracking (SCC) is induced from the combined influence of tensile stress and a corrosive medium [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 343-345]. The required tensile stresses may be in the form of directly applied stresses or residual stresses, with welding operations often introducing such residual stresses [Handbook of Corrosion Engineering, 7. Acceleration and Amplification of Corrosion Damage, p. 493-494].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 53.01,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué son los inhibidores de corrosión?",
+      "in_domain": true,
+      "answer": "Los inhibidores de corrosión son sustancias químicas que, cuando se añaden en una concentración pequeña a un entorno, efectivamente disminuyen la velocidad del proceso de corrosión [Handbook of Corrosion Engineering, Corrosion Inhibitors, p. 839-840].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 42.55,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Cuál es la capital de Mongolia?",
+      "in_domain": false,
+      "answer": "El texto proporcionado no contiene información sobre la capital de Mongolia, por lo que no puedo responder a esta pregunta basándome solo en los datos dados [Book, Chapter, p. X-Y].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 39.64,
+      "fabricated_citation": false
+    },
+    {
+      "query": "What's a good recipe for chocolate cake?",
+      "in_domain": false,
+      "answer": "The provided excerpts focus on corrosion resistance of materials and do not contain any information about recipes, including for chocolate cakes. Therefore, I cannot provide a recipe based on the given data.\n\n[Handbook of Corrosion Engineering, 8. Materials Selection, p. 640-652]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 36.43,
+      "fabricated_citation": true
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2022?",
+      "in_domain": false,
+      "answer": "Lo siento, pero los excerptos proporcionados no contienen información sobre quién ganó el mundial de fútbol de 2022. Estos pasajes se centran en temas relacionados con corrosión, materiales y algunas propiedades químicas, no en eventos deportivos recientes. No puedo responder esta pregunta basándome en la información dada [Handbook of Corrosion Engineering, 3. High-Temperature Corrosion, p. 257] [Handbook of Corrosion Engineering, 8. Materials Selection, p. 613] [Handbook of Corrosion Engineering, 3. High-Temperature Corrosion, p. 235] [Handbook of Corrosion Engineering, 8. Materials Selection, p. 644] [Handbook of Corrosion Engineering, 8. Materials Selection, p. 650-651].",
+      "n_sources": 5,
+      "n_citations": 5,
+      "is_refusal": true,
+      "elapsed_seconds": 52.2,
+      "fabricated_citation": true
+    },
+    {
+      "query": "What is the best programming language for web development?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain information about the best programming language for web development. Therefore, I cannot make a claim based on the given text [Handbook of Corrosion Engineering, 4. Modeling, Life Prediction, and Computer Applications, p. 334-336; Handbook of Corrosion Engineering, 3. High-Temperature Corrosion, p. 257].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 42.34,
+      "fabricated_citation": false
+    },
+    {
+      "query": "¿Cuántos planetas tiene el sistema solar?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain information about the number of planets in the solar system. Therefore, I cannot answer this question using only the given text.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 34.27,
+      "fabricated_citation": false
+    }
+  ]
+}

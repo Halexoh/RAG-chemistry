@@ -1,0 +1,183 @@
+{
+  "summary": {
+    "n_in_domain": 10,
+    "n_out_of_domain": 5,
+    "keyword_hit_rate": 1.0,
+    "book_hit_rate": 1.0,
+    "citation_validity_rate": 0.8,
+    "out_of_domain_refusal_rate": 1.0,
+    "out_of_domain_fabricated_citation_rate": 0.2,
+    "avg_latency_seconds": 12.4
+  },
+  "records": [
+    {
+      "query": "What is polyurea used for in protective coatings?",
+      "in_domain": true,
+      "answer": "Polyurea is used for protective coatings due to its rapid curing ability, which allows it to set almost instantly after application [Coatings Materials and Surface Coatings, Chapter 7, p. 1-2]. This property enables the coating to be applied as a single layer in just 30 seconds or less, providing immediate protection [Coatings Materials and Surface Coatings, Chapter 7, p. 2-3]. Additionally, polyurea coatings offer excellent resistance to chemicals, water, abrasion, and weathering [Coatings Materials and Surface Coatings, Chapter 7, p. 4-5], making them suitable for various protective applications in harsh environments.",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 19.16,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es el Parylene y para qué se usa como recubrimiento?",
+      "in_domain": true,
+      "answer": "El parylene es una familia de polímeros orgánicos lineales de alta molecularidad formados por poliparacileno (PPX) [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3]. Se aplica como recubrimiento mediante el proceso de depósito de polimetrización a vapor (VDP), un método que produce una capa sin agujeros y con control de espesor excepcionalmente uniforme [Coatings Materials and Surface Coatings, Chapter 17, p. 1-2].\n\nSe utiliza principalmente en la electrónica para proteger circuitos integrados y componentes electrónicos debido a sus excelentes propiedades dielectrícicas y de barrera [Coatings Materials and Surface Coatings, Chapter 17, p. 1]. Es especialmente útil como dielectrico funcional en capacitores de film de alta calidad [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3].\n\nAdemás, el parylene también se utiliza en aplicaciones militares y aeroespaciales debido a su resistencia a la temperatura y a la radiación UV [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3].",
+      "n_sources": 5,
+      "n_citations": 5,
+      "is_refusal": false,
+      "elapsed_seconds": 16.54,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What are thermoplastic elastomers?",
+      "in_domain": true,
+      "answer": "Thermoplastic elastomers (TPEs) are materials that can be processed like conventional thermoplastics but provide finished products with properties similar to those of a thermoset rubber [Coatings Materials and Surface Coatings, Chapter 10, p. 1-2]. They consist of a chemically cross-linked rubber phase in a continuous matrix of thermoplastic material, offering better performance than non-crosslinked rubber/thermoplastic blends [Coatings Materials and Surface Coatings, Chapter 10, p. 1-2].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 8.39,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué función cumple un primer en un sistema de recubrimiento?",
+      "in_domain": true,
+      "answer": "Según el texto, un primer proporciona varios roles importantes en un sistema de recubrimiento:\n\n1. Un primer \"debe convertirse, después de su aplicación, en una membrana sólida y adherente\" que tenga todas las propiedades discutidas anteriormente [Handbook of Corrosion Engineering, Protective Coatings, p. 830-831]. \n\n2. El primer es responsable de \"convertir la membrana\" del sistema de recubrimiento en una estructura sólida y coherente que puede resistir condiciones ambientales adversas [Handbook of Corrosion Engineering, Protective Coatings, p. 830-831].\n\n3. En el caso de una protección anticorrosiva, se menciona que solo algunos tipos de ligaadores son resistentes a la corrosión y pueden usarse en formulaciones de recubrimientos protectores [Handbook of Corrosion Engineering, Protective Coatings, p. 830-831].\n\n4. El primer se describe como \"el material que facilita esta conversión\" en una membrana sólida y adherente del sistema de recubrimiento [Handbook of Corrosion Engineering, Protective Coatings, p. 830-831]. \n\nEn resumen, un primer es crucial para proporcionar cohesión al sistema de recubrimiento, convertirlo en una estructura sólida y adherente, y en el caso de recubrimientos protectores, proporcionar resistencia a la corrosión. [Handbook of Corrosion Engineering, Protective Coatings, p. 830-831]",
+      "n_sources": 5,
+      "n_citations": 5,
+      "is_refusal": false,
+      "elapsed_seconds": 21.31,
+      "keyword_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is a zinc-rich coating used for?",
+      "in_domain": true,
+      "answer": "Zinc-rich coatings contain high loadings of zinc dust as a pigment and serve to prevent corrosion galvanically by acting as the anode of an electrochemical cell, with the steel substrate being the cathode [Coatings Materials and Surface Coatings, Chapter 57, p. 6-7].\n\nThese coatings are widely employed as nontopcoated systems in environments where the zinc corrosion product is not easily dissolved (i.e., in neutral environments) [Coatings Materials and Surface Coatings, Chapter 57, p. 8]. They can also be used either topcoated or untopcoated to protect steel surfaces [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 824-825].\n\nAccording to the information provided, zinc-rich coatings are suitable for use in mild-to-moderately severe environments and are recommended as a durable shop primer or protective one-coat system for normal atmospheric weathering environments and certain immersion services [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 824-825].",
+      "n_sources": 5,
+      "n_citations": 4,
+      "is_refusal": false,
+      "elapsed_seconds": 15.11,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es la corrosión por picadura?",
+      "in_domain": true,
+      "answer": "La corrosión por picadura es un tipo de corrosión localizada en la que se producen cavidades o \"huecos\" en el material [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 343-345]. Es más peligrosa que la corrosión uniforme debido a que es difícil detectar, predecir y diseñar medidas contra ella [Ibid., p. 345-346].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 9.06,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is cathodic protection?",
+      "in_domain": true,
+      "answer": "Cathodic protection (CP) is a technique aimed at minimizing anodic dissolution by applying a cathodic current to the structure. This principle involves polarizing the rebar to a cathodic potential, thus reducing the risk of corrosion [Handbook of Corrosion Engineering, 2. Environments, p. 164-165]. The CP system typically consists of a direct current source (rectifier) that establishes the rebar as the cathode in an electrochemical cell, requiring a separate anode to complete the electric circuit [Handbook of Corrosion Engineering, Cathodic Protection, p. 869-870].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 11.27,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es la corrosión galvánica?",
+      "in_domain": true,
+      "answer": "La corrosión galvánica ocurre cuando se utilizan materiales metálicos de diferentes potenciales electroquímicos en una misma estructura. Este fenómeno se produce porque el material más anódico (el que tiene un mayor potencial positivo en la escala del potencial de corrección) tiende a oxidarse preferentemente, mientras que el metal más cátodo (el que tiene un mayor potencial negativo) será protegido. Específicamente:\n\n- **Aluminio** es anódico con respecto a muchos materiales utilizados en la construcción estructural como acero, aluminio de alveolo, acero inoxidable, titanio, aleaciones de níquel, entre otros [Book, Chapter 8, p. 609-610].\n\n- Se recomienda usar materiales con potenciales electroquímicos similares en un mismo entorno para prevenir la corrosión galvánica [Book, Chapter 5, p. 373-374].\n\n- En el diseño de estructuras, es recomendable aumentar las secciones anódicas o hacer que estas sean fácilmente reemplazables para prevenir los problemas de corrosión [Book, Chapter 5, p. 373-374].",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 23.65,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What causes stress corrosion cracking?",
+      "in_domain": true,
+      "answer": "Stress corrosion cracking (SCC) is induced from the combined influence of tensile stress and a corrosive medium [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 343-345]. The required tensile stresses may be in the form of directly applied stresses or residual stresses, which can result from processes such as cold deformation, forming, welding, heat treatment, machining, and grinding [Handbook of Corrosion Engineering, 7. Acceleration and Amplification of Corrosion Damage, p. 500-512].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 14.26,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué son los inhibidores de corrosión?",
+      "in_domain": true,
+      "answer": "Los inhibidores de corrosión son sustancias químicas que, cuando se agregan en concentraciones pequeñas a un entorno, reducen eficazmente la tasa de corrosión [Handbook of Corrosion Engineering, Corrosion Inhibitors, p. 839-840].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 9.33,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Cuál es la capital de Mongolia?",
+      "in_domain": false,
+      "answer": "El texto proporcionado no contiene información sobre la capital de Mongolia, por lo que no puedo responder a esta pregunta basándome solo en los datos dados [Book, Chapter, p. X-Y].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 6.71,
+      "fabricated_citation": false
+    },
+    {
+      "query": "What's a good recipe for chocolate cake?",
+      "in_domain": false,
+      "answer": "The provided excerpts are related to materials selection and corrosion engineering, focusing on the compatibility of various chemicals with different metals. There is no information available regarding recipes or food preparation in these excerpts.\n\nTherefore, I cannot provide a recipe for chocolate cake based on the given data [Handbook of Corrosion Engineering, 8. Materials Selection, p. 640-652].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 9.33,
+      "fabricated_citation": true
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2022?",
+      "in_domain": false,
+      "answer": "Lo siento, pero los extractos proporcionados no contienen información sobre quién ganó el Mundial de Fútbol de 2022. Estos extractos se centran en temas relacionados con corrosión y materiales, por lo que no tienen relación con el resultado del torneo de fútbol mencionado.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 10.56,
+      "fabricated_citation": false
+    },
+    {
+      "query": "What is the best programming language for web development?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain information about the best programming language for web development. Therefore, I cannot answer this question based on the given text.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 5.66,
+      "fabricated_citation": false
+    },
+    {
+      "query": "¿Cuántos planetas tiene el sistema solar?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain any information about the number of planets in the solar system. Therefore, I cannot answer this question based solely on the given text.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 5.65,
+      "fabricated_citation": false
+    }
+  ]
+}

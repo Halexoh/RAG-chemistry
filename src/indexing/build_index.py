@@ -23,6 +23,7 @@ import faiss
 import numpy as np
 
 from src.indexing.reference_filter import is_bibliography_like
+from src.indexing.structural_filter import is_structural_section
 
 PROCESSED_DIR = Path("data/processed")
 VECTORSTORE_DIR = Path("vectorstore")
@@ -45,7 +46,7 @@ def build_index() -> tuple[int, int]:
             continue
         chunks, vectors = load_book(book_dir)
         for chunk, vector in zip(chunks, vectors):
-            if is_bibliography_like(chunk["text"]):
+            if is_bibliography_like(chunk["text"]) or is_structural_section(chunk["chapter"]):
                 n_excluded += 1
                 continue
             kept_chunks.append(chunk)

@@ -1,0 +1,184 @@
+{
+  "summary": {
+    "n_in_domain": 10,
+    "n_out_of_domain": 5,
+    "keyword_hit_rate": 1.0,
+    "book_hit_rate": 0.9,
+    "citation_validity_rate": 0.8,
+    "out_of_domain_refusal_rate": 1.0,
+    "out_of_domain_fabricated_citation_rate": 0.6,
+    "avg_latency_seconds": 37.52
+  },
+  "records": [
+    {
+      "query": "What is polyurea used for in protective coatings?",
+      "in_domain": true,
+      "answer": "Polyurea is used for protective coatings due to its rapid curing ability, which allows it to be applied and set quickly even on damp or cold surfaces. This characteristic makes it suitable for coating vertical and overhead surfaces without the risk of microcellular development that could occur with other coatings [Coatings Materials and Surface Coatings, Chapter 7, p. 3-4]. Additionally, its chemical resistance, weathering characteristics, and ability to adhere well to different substrates contribute to its effectiveness in protective applications [Coatings Materials and Surface Coatings, Chapter 7, p. 1-2; Coatings Materials and Surface Coatings, Chapter 7, p. 3-4].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 44.12,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es el Parylene y para qué se usa como recubrimiento?",
+      "in_domain": true,
+      "answer": "El parylene es una familia de polímeros lineales de alta molecular peso, compuestos principalmente por poliparacileno (PPX), que se aplica a través del proceso de depositación por polimerización gaseosa (VDP) [Coatings Materials and Surface Coatings, Chapter 17, p. 1-2].\n\nSe utiliza comúnmente como recubrimiento debido a sus excelentes propiedades dielectricas y barrera [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3]. \n\nSu primera aplicación fue en la construcción electrónica, donde se usa Parylene N como dielectrodo de alta calidad para miniatura de condensadores filmáticos [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3]. Además, Parylene C goza de una reputación por ser un recubrimiento de alto rendimiento en circuitos electrónicos militares, especialmente en aviones [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3].\n\nPor sus propiedades excepcionales como isolante eléctrico y barrera contra el oxígeno, se utiliza ampliamente para proteger componentes electrónicos de la descomposición química y daños por corrosión [Coatings Materials and Surface Coatings, Chapter 17, p. 2-3].",
+      "n_sources": 5,
+      "n_citations": 5,
+      "is_refusal": false,
+      "elapsed_seconds": 37.69,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What are thermoplastic elastomers?",
+      "in_domain": true,
+      "answer": "Thermoplastic elastomers (TPEs) are materials that can be processed in the same manner as conventional thermoplastics but provide finished articles with properties similar to those of a thermoset rubber [Coatings Materials and Surface Coatings, Chapter 10, p. 1-2].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 25.93,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué función cumple un primer en un sistema de recubrimiento?",
+      "in_domain": true,
+      "answer": "Un primer en un sistema de recubrimiento proporciona varias funciones importantes:\n\nI Un resistente sellado para el sistema de recubrimiento [Book, Protective Coatings, p. 830-831]\n\nEstas funciones son esenciales para proteger la superficie y mejorar la durabilidad del recubrimiento overall.",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 29.64,
+      "keyword_hit": true,
+      "book_hit": false,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What is a zinc-rich coating used for?",
+      "in_domain": true,
+      "answer": "Zinc-rich coatings are used to prevent corrosion galvanically by acting as the anode of an electrochemical cell, where the steel substrate serves as the cathode [Coatings Materials and Surface Coatings, Chapter 57, p. 8]. They are widely employed as nontopcoated systems in environments where the zinc corrosion product is not easily dissolved (i.e., in neutral environments) [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 824-825].\n\nAdditionally, one-coat zinc-rich painting systems are suitable for mild-to-moderately severe environments and can be used as a durable shop primer or protective coating for normal atmospheric weathering [Handbook of Corrosion Engineering, 9. Protective Coatings, p. 824].",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 33.6,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es la corrosión por picadura?",
+      "in_domain": true,
+      "answer": "La corrosión por picadura es un tipo de corrosión localizada que se caracteriza porque áreas discretas de un material sufren un ataque rápido mientras que la mayor parte del resto de la superficie permanece virtualmente intacta. Este proceso de corrosión, ilustrado en la figura 5.3, puede producir agujeros con sus bocas abiertas (no cubiertos) o cubiertos por una membrana semipermeable formada por productos de corrosión. Estos agujeros pueden tener formas hemisféricas o copadas.\n\nSegún el texto proporcionado [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 345-346], la localización de los procesos anódico y cátodo de corrosión se define por el cociente de áreas (Sa/Sc), donde Sa es la superficie que apoya las reacciones anódicas y Sc la que apoya las reacciones cátodicas. Este cociente puede ser un factor importante en el desarrollo de problemas de corrosión localizada.\n\nLa corrosión por picadura es considerada más peligrosa que la corrosión uniforme debido a su dificultad para detectarse, predecirse y diseñar contra ella [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 343-345].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 48.31,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is cathodic protection?",
+      "in_domain": true,
+      "answer": "Cathodic protection (CP) is a method used to control corrosion on existing structures. The basic concept involves polarizing the metal to be protected to a cathodic potential, minimizing anodic dissolution [Handbook of Corrosion Engineering, Chapter 11, p. 863-864]. This is typically achieved by connecting the structure to a sacrificial anode or using an impressed current system [Handbook of Corrosion Engineering, Chapter 11, p. 871-872]. CP can be applied to coated structures where the coating provides primary corrosion protection, though the CP current requirements are often excessive for uncoated systems [Handbook of Corrosion Engineering, Chapter 11, p. 863]. It is one of the few techniques that can be used on existing structures, with well-established applications dating back over 20 years [Handbook of Corrosion Engineering, Chapter 2, p. 168-179].",
+      "n_sources": 5,
+      "n_citations": 4,
+      "is_refusal": false,
+      "elapsed_seconds": 43.78,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es la corrosión galvánica?",
+      "in_domain": true,
+      "answer": "La corrosión galvánica ocurre cuando se utilizan materiales metálicos de corriente eléctrica diferente en una misma aplicación [Handbook of Corrosion Engineering, 8. Materials Selection, p. 609-610]. En este proceso, el metal más anódico (en este caso, el aluminio) tiende a corrodirse preferentemente respecto al metal más cátodico en la pareja galvánica [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 373-374]. Para prevenir esta corrosión, se recomienda utilizar materiales con potenciales de corrosión similares y evitar ratios de área desfavorables (Sa/Sc) [Ibid., p. 373-374]. También se puede emplear aislamiento físico para separar los materiales galvánicamente incompatibles, aunque esto no siempre es práctico [Ibid., p. 373-374].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 44.91,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What causes stress corrosion cracking?",
+      "in_domain": true,
+      "answer": "Stress corrosion cracking (SCC) is a cracking process that requires the simultaneous action of a corrodent and sustained tensile stress [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 343-345].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 33.71,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué son los inhibidores de corrosión?",
+      "in_domain": true,
+      "answer": "Los inhibidores de corrosión son químicos que, cuando se añaden en concentraciones pequeñas al entorno, reducen efectivamente el ritmo del proceso de corrosión. [Handbook of Corrosion Engineering, Corrosion Inhibitors, p. 839-840] Estos inhibidores pueden ser clasificados según su mecanismo de acción, y son utilizados en diversos sectores industriales para proteger metales frente a la corrosión.",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 36.2,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Cuál es la capital de Mongolia?",
+      "in_domain": false,
+      "answer": "La información proporcionada no contiene datos sobre la capital de Mongolia, por lo que no se puede responder a esta pregunta utilizando solo los excerptos dados [Handbook of Corrosion Engineering, Index, p. 1066-1067].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 38.52,
+      "fabricated_citation": true
+    },
+    {
+      "query": "What's a good recipe for chocolate cake?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain any information about recipes for chocolate cake. They are related to materials selection and corrosion engineering data tables. Therefore, I cannot provide a recipe for chocolate cake based on the given information.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 31.41,
+      "fabricated_citation": false
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2022?",
+      "in_domain": false,
+      "answer": "The provided excerpts are related to corrosion and coatings, but do not contain information about the winner of the 2022 World Cup. Therefore, I cannot answer this question based on the given data.\n\n[Handbook of Corrosion Engineering, Index, p. 1079-1080] - The content here is related to various alloys and their properties, not football or sports events.",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 40.48,
+      "fabricated_citation": true
+    },
+    {
+      "query": "What is the best programming language for web development?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain information about the best programming language for web development. The text focuses on corrosion engineering, asset management systems, and early developments in networking technologies, but does not discuss programming languages specifically. Therefore, I cannot answer this question based on the given excerpts. [Handbook of Corrosion Engineering, Corrosion Maintenance through Inspection and Monitoring, p. 402-403]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 39.37,
+      "fabricated_citation": true
+    },
+    {
+      "query": "¿Cuántos planetas tiene el sistema solar?",
+      "in_domain": false,
+      "answer": "Los exógrafos proporcionados no contienen información sobre el número de planetas en el sistema solar. Estos exógrafos se centran en reacciones químicas relacionadas con la corrosión y los óxidos, pero no discuten astronomía o el número de planetas.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 35.11,
+      "fabricated_citation": false
+    }
+  ]
+}
