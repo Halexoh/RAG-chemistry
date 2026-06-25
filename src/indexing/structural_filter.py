@@ -19,11 +19,12 @@ chemistry content.
 STRUCTURAL_CHAPTERS = frozenset(
     {
         "Front Matter",
-        "front_matter",
         "Table of Contents",
         "Index",
         "Acknowledgments",
         "Preface",
+        "Foreword",
+        "References",
     }
 )
 

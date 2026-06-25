@@ -17,6 +17,10 @@ short, decent list fast), not the whole corpus.
 
 Model: BAAI/bge-reranker-base — multilingual, matching the embedding
 model's bilingual ES/EN requirement.
+
+Forced onto CPU for the same reason as embedder.py: this model's MPS
+(Apple GPU) usage can deadlock against Ollama's own GPU usage during
+generation, on a memory-constrained machine running both at once.
 """
 
 from sentence_transformers import CrossEncoder
@@ -29,7 +33,7 @@ _model: CrossEncoder | None = None
 def get_model() -> CrossEncoder:
     global _model
     if _model is None:
-        _model = CrossEncoder(MODEL_NAME)
+        _model = CrossEncoder(MODEL_NAME, device="cpu")
     return _model
 
 

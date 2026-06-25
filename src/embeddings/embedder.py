@@ -16,6 +16,15 @@ space if it's left off.
 Embeddings are L2-normalized on output, so cosine similarity between two
 vectors reduces to a plain dot product — what FAISS's inner-product index
 computes directly (used in the indexing phase).
+
+Forced onto CPU (not Apple Silicon's MPS/GPU backend): found during
+evaluation that this model's MPS tensor copies (`MTLCommandBuffer
+waitUntilCompleted`) can stall indefinitely when Ollama's own GPU usage
+is happening concurrently under memory pressure — two processes
+contending for the same Metal command queue on a 16 GB machine. CPU
+inference is slower per call but small batches (a handful of chunks,
+one query) make that difference negligible, and it removes the GPU
+contention with Ollama entirely.
 """
 
 import numpy as np
@@ -29,7 +38,7 @@ _model: SentenceTransformer | None = None  # lazy singleton: loading is the expe
 def get_model() -> SentenceTransformer:
     global _model
     if _model is None:
-        _model = SentenceTransformer(MODEL_NAME)
+        _model = SentenceTransformer(MODEL_NAME, device="cpu")
     return _model
 
 

@@ -26,7 +26,25 @@ Validado contra el Handbook real: detectó correctamente 18 secciones de nivel s
 
 Hacerlo por página y no por archivo importa porque un mismo capítulo puede mezclar páginas nativas con páginas escaneadas (ej. una figura insertada como imagen completa). Correr OCR sobre las 75 páginas confirmadas nativas de los dos libros actuales sería ~50-100x más lento sin ninguna ganancia.
 
-En la carga inicial (74 archivos, 1594 páginas combinadas) no se detectó ninguna página escaneada — ambos libros tienen texto nativo limpio. El camino de OCR queda construido y probado por unidad, pendiente de ejercitarse con datos reales cuando lleguen libros escaneados.
+En la carga inicial (74 archivos, 1594 páginas combinadas) no se detectó ninguna página escaneada — ambos libros tienen texto nativo limpio. Al ampliar el corpus a 11 libros (6491 páginas), el camino de OCR finalmente se ejercitó con datos reales: 5 páginas (0.08%) en 3 libros distintos no tenían texto nativo y se resolvieron correctamente vía Tesseract — confirmando que el fallback funciona en producción, no solo en los tests unitarios.
+
+## Actualización: más convenciones de nombre de archivo de las anticipadas
+
+Al cargar 9 libros adicionales (de varias editoriales/fuentes), aparecieron formatos de nombre de archivo que el `chapter_from_filename` original (un solo regex, `ch(\d+)\.pdf$`) no cubría:
+
+| Convención | Ejemplo real | Libro |
+|---|---|---|
+| Número justo antes de la extensión | `44044ch7.pdf` | Coatings Materials |
+| Número al inicio + descripción | `Ch5. abrasive blasting...pdf` | Corrosion Control Through Organic Coatings |
+| ID numérico + guion bajo + número (± letra de sub-parte) | `90725_05a.pdf`, `13372_06.pdf` | Failure Analysis, varios Handbooks |
+| "part" en vez de "ch" | `part 1 - paint composition...pdf` | Paint and Surface Coatings |
+| Sin número — el archivo es un artículo con título propio | `An Aspect of Concrete Protection by Surface Coating.pdf` | Organic Coatings for Corrosion Control (volumen tipo symposium) |
+
+`chapter_from_filename` ahora prueba varios patrones en orden (ver `chapters.py`). Para el último caso (sin número), se agregó `structural_label_from_filename` — reconoce nombres de secciones no numeradas por código corto (`_fm`, `_toc`, `_indx`, `_pref`, `_fore`, `_ref`, `_glo`, `_supp`) o por palabra completa en inglés/español (`preface`/`prefacio`, `index`/`índice`, `portada`, `copyright`...). Si ninguno de los dos reconoce el archivo, el nombre del archivo mismo se usa como capítulo — correcto para libros tipo *symposium* donde cada PDF es un artículo independiente sin numeración de capítulo.
+
+Validado contra los nombres reales de los 11 libros antes de correr la extracción completa: el 100% de los 459 archivos multi-PDF quedó clasificado en exactamente una de las tres categorías (numérico, estructural, o título propio) — ningún archivo quedó sin resolver.
+
+Nota deliberada: `_glo` (glosario) y `_supp` (suplemento) se mapean a etiquetas propias ("Glossary", "Supplement") en vez de a una categoría estructural genérica, porque sí pueden tener contenido técnico real (definiciones, datos suplementarios) — no se excluyen del índice en la fase 4, a diferencia de `_fm`/`_toc`/`_indx`/`_pref`/`_fore`/`_ref`.
 
 ## Output
 

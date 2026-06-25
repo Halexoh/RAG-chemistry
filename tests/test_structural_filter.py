@@ -4,13 +4,24 @@ from src.indexing.structural_filter import is_structural_section
 def test_known_structural_sections_are_flagged():
     assert is_structural_section("Index") is True
     assert is_structural_section("Table of Contents") is True
-    assert is_structural_section("front_matter") is True
+    assert is_structural_section("Front Matter") is True
+    assert is_structural_section("Preface") is True
+    assert is_structural_section("Foreword") is True
+    assert is_structural_section("References") is True
 
 
 def test_real_chapters_are_not_flagged():
     assert is_structural_section("5. Corrosion Failures") is False
     assert is_structural_section("7") is False
     assert is_structural_section("Introduction") is False
+
+
+def test_glossary_and_supplement_are_kept_as_content():
+    # Deliberately not structural: glossaries carry real definitions, and a
+    # supplement may carry real technical content — neither is pure noise
+    # the way a bibliography or alphabetical index is.
+    assert is_structural_section("Glossary") is False
+    assert is_structural_section("Supplement") is False
 
 
 def test_none_is_not_flagged():

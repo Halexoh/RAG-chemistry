@@ -65,6 +65,23 @@ La pregunta "¿qué función cumple un primer en un sistema de recubrimiento?" f
 
 Esta máquina tiene 16 GB de RAM. Con el modelo de embeddings (~1.1 GB), el reranker (~1.1 GB) y el LLM de Ollama (~4.7 GB) cargados a la vez, una corrida de evaluación llegó a usar 6.9 GB de los 8 GB de swap disponibles — memoria bajo presión real, con paginación activa. Esto es información honesta sobre los límites de correr "todo local" en hardware de consumo: funciona, pero el primer cuello de botella no es el código, es la RAM disponible para tener tres modelos residentes simultáneamente. Para uso en producción (no portafolio), el primer paso sería evitar tener los tres modelos cargados a la vez, o moverse a un modelo más pequeño.
 
+## Corpus ampliado a 11 libros — resultado real (`eval/results/20260625_120715.json`)
+
+| Métrica | 2 libros | 11 libros |
+|---|---|---|
+| keyword_hit_rate | 1.00 | 0.90 |
+| book_hit_rate | 1.00 | 0.89 |
+| citation_validity_rate | 0.80 | 0.70 |
+| out_of_domain_refusal_rate | 1.00 | 0.80 |
+| out_of_domain_fabricated_citation_rate | 0.20 | 0.40 |
+| latencia promedio | 12.4s | 43.3s |
+
+Empeoró en todas las métricas, de forma consistente con lo esperado al escalar 5.5x el corpus (1899 → 6957 chunks totales) sin cambiar el modelo de reranking ni el tamaño del top-k: más libros significa más candidatos compitiendo por el mismo top-5 final, y temas que antes tenían una sola fuente clara en el corpus ahora compiten con pasajes superficialmente similares de otros libros. Esto no es una regresión de código — es la razón por la que un sistema de retrieval en producción con un corpus grande normalmente necesita ajustar `top_k` de FAISS, el tamaño del reranking, o filtros adicionales por tema/libro, ninguno de los cuales se justificaba con 2 libros.
+
+La latencia subió de forma desproporcionada (3.5x) frente al crecimiento del corpus (5.5x en chunks, pero la búsqueda FAISS sigue siendo milisegundos): la causa real no es el tamaño del índice, sino dos cambios de infraestructura hechos en esta misma fase para resolver un segfault real (ver [docs/04-indexacion.md](04-indexacion.md)) — forzar el embedder y el reranker a CPU (en vez de MPS/GPU) y la presión de memoria de la máquina de 16 GB corriendo simultáneamente el embedder, el reranker y Ollama. La sección de latencia más abajo ya documentaba esta máquina como el cuello de botella; el corpus ampliado simplemente lo hizo más visible.
+
+No se "arregló" nada de esto en esta fase — documentarlo honestamente y dejarlo como limitación conocida es preferible a ajustar el test set o el umbral de las métricas para que luzcan mejor.
+
 ## Qué queda abierto, a propósito
 
 - `fabricated_citation_rate = 0.20` no es cero. Documentado arriba como limitación conocida del modelo, no oculto.

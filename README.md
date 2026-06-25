@@ -41,11 +41,13 @@ From the latest evaluation run ([`docs/07-evaluacion.md`](docs/07-evaluacion.md)
 
 | Metric | Value |
 |---|---|
-| Keyword hit rate (in-domain) | 1.00 |
-| Correct-book hit rate (in-domain) | 1.00 |
-| Citation validity rate | 0.80 |
-| Refusal rate (out-of-domain) | 1.00 |
-| Fabricated-citation rate (out-of-domain) | 0.20 |
+| Keyword hit rate (in-domain) | 0.90 |
+| Correct-book hit rate (in-domain) | 0.89 |
+| Citation validity rate | 0.70 |
+| Refusal rate (out-of-domain) | 0.80 |
+| Fabricated-citation rate (out-of-domain) | 0.40 |
+
+Measured on an 11-book corpus (6957 chunks). Metrics are lower than an earlier 2-book run (1.00/1.00/0.80/1.00/0.20) — expected when scaling the corpus 5.5x without re-tuning `top_k` or the reranker: see [`docs/07-evaluacion.md`](docs/07-evaluacion.md) for the full comparison and why this isn't hidden or tuned away.
 
 **Example — in-domain, Spanish:**
 > *"¿Qué es la corrosión por picadura?"*
@@ -114,7 +116,7 @@ python -m src.embeddings.run        # chunks.jsonl      -> embeddings.npy
 python -m src.indexing.build_index  # embeddings.npy    -> vectorstore/index.faiss
 python -m src.evaluation.run_eval   # runs the 15-question test set, saves a report
 
-pytest                                # 35 tests across every stage
+pytest                                # 44 tests across every stage
 ```
 
 Or open [`notebooks/pipeline_completo.ipynb`](notebooks/pipeline_completo.ipynb) for an interactive, explained walkthrough of every stage with real outputs from this corpus.
@@ -125,3 +127,4 @@ Or open [`notebooks/pipeline_completo.ipynb`](notebooks/pipeline_completo.ipynb)
 - The bibliography filter is a tuned regex heuristic, not a learned classifier — it can miss reference styles it wasn't tuned against (see [`docs/04-indexacion.md`](docs/04-indexacion.md)).
 - A 7B local LLM doesn't follow prompt instructions 100% of the time (e.g. occasionally cites a source while still correctly refusing to answer) — see [`docs/07-evaluacion.md`](docs/07-evaluacion.md).
 - No LLM-as-judge evaluation of answer quality, only retrieval/citation correctness — a natural next step if this grows past a portfolio project.
+- Embeddings and reranking are forced onto CPU rather than Apple Silicon's GPU (MPS) — found a real segfault from `faiss` and PyTorch fighting over the same OpenMP runtime when used together in one process; see [`docs/04-indexacion.md`](docs/04-indexacion.md).

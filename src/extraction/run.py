@@ -15,7 +15,7 @@ from pathlib import Path
 
 import fitz
 
-from src.extraction.chapters import chapter_from_filename, chapter_map_from_toc
+from src.extraction.chapters import chapter_from_filename, chapter_map_from_toc, structural_label_from_filename
 from src.extraction.pdf_text import extract_page_text
 
 RAW_DIR = Path("data/raw")
@@ -29,7 +29,14 @@ def slugify(name: str) -> str:
 def extract_multi_file_book(book_title: str, pdf_files: list[Path]) -> list[dict]:
     records = []
     for pdf_path in pdf_files:
-        chapter = chapter_from_filename(pdf_path.name) or "front_matter"
+        # In order: a numbered chapter, a recognized structural section, or
+        # — if neither matches — the filename's own title is the chapter
+        # (e.g. one article in an edited volume with no chapter numbers).
+        chapter = (
+            chapter_from_filename(pdf_path.name)
+            or structural_label_from_filename(pdf_path.name)
+            or pdf_path.stem
+        )
         doc = fitz.open(pdf_path)
         for i, page in enumerate(doc):
             text, method = extract_page_text(page)
