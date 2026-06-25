@@ -1,0 +1,9 @@
+PyMuPDF
+pdf2image
+pytesseract
+pdfplumber
+sentence-transformers
+faiss-cpu
+numpy
+ollama
+pytest
