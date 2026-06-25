@@ -3,6 +3,7 @@ pdf2image
 pytesseract
 pdfplumber
 sentence-transformers
+tiktoken
 faiss-cpu
 numpy
 ollama
