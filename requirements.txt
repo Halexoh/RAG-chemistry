@@ -8,3 +8,5 @@ faiss-cpu
 numpy
 ollama
 pytest
+jupyter
+ipykernel
