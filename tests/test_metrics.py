@@ -30,6 +30,22 @@ def test_extract_citations_page_range_and_multiple():
     assert citations[1]["page_start"] == 12 and citations[1]["page_end"] == 12
 
 
+def test_extract_citations_book_title_with_internal_comma():
+    # book_title_from_bracket_folder() produces titles like "Title (Author,
+    # 2007)" — the book field itself contains a comma, so it must not be
+    # mistaken for the book/chapter field boundary.
+    text = "A claim [Coatings Materials and Surface Coatings (Tracton, 2007), Chapter 10, p. 10-12]."
+    citations = extract_citations(text)
+    assert citations == [
+        {
+            "book": "Coatings Materials and Surface Coatings (Tracton, 2007)",
+            "chapter": "Chapter 10",
+            "page_start": 10,
+            "page_end": 12,
+        }
+    ]
+
+
 def test_citation_is_valid_when_overlapping_source_exists():
     citation = {"book": "Book A", "page_start": 10, "page_end": 12}
     sources = [{"book": "Book A", "page_start": 11, "page_end": 11}]

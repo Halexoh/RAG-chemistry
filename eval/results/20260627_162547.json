@@ -1,0 +1,180 @@
+{
+  "summary": {
+    "n_in_domain": 10,
+    "n_out_of_domain": 5,
+    "keyword_hit_rate": 0.8,
+    "book_hit_rate": 0.67,
+    "citation_validity_rate": 0.4,
+    "out_of_domain_refusal_rate": 1.0,
+    "out_of_domain_fabricated_citation_rate": 0.2,
+    "avg_latency_seconds": 32.12
+  },
+  "records": [
+    {
+      "query": "What is polyurea used for in protective coatings?",
+      "in_domain": true,
+      "answer": "Polyurea is often used instead of conventional coatings when enhanced properties such as crack bridging, toughness, corrosion or abrasion resistance are required due to the demanding nature of the end-use application [Book, Chapter 5.10 Light-stable, thick film coatings, p. 467-468].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 33.46,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es el Parylene y para qué se usa como recubrimiento?",
+      "in_domain": true,
+      "answer": "Los excerptos proporcionados no contienen información sobre el Parylene ni sus usos como recubrimiento. Se enfocan principalmente en pinturas, resinas poliéster, epoxidas, poliuretánicas y otros materiales utilizados en recubrimientos industriales y marinos.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 25.55,
+      "keyword_hit": false,
+      "book_hit": false,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What are thermoplastic elastomers?",
+      "in_domain": true,
+      "answer": "Thermoplastic elastomers (TPEs) are materials that are processed like conventional thermoplastics but exhibit properties and performance similar to thermoset rubbers. Specifically, a thermoplastic vulcanizate (TPV), which is a type of TPE, has a chemically cross-linked rubber phase within a continuous matrix of thermoplastic, leading to improved mechanical properties compared to simple blends of the same rubber and thermoplastic components without cross-linking [Coatings Materials and Surface Coatings (Tracton, 2007), Chapter 10, p. 10-1].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 29.87,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué función cumple un primer en un sistema de recubrimiento?",
+      "in_domain": true,
+      "answer": "Un primer no se menciona explícitamente en los pasajes proporcionados, por lo que no puedo dar una respuesta precisa sobre qué función cumple en un sistema de recubrimiento. Los textos discuten sobre pigmentos, vehículos, componentes químicos para recubrimientos líquidos y métodos de curado, pero no se refieren a \"primers\" o capas específicas como primer.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 20.35,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What is a zinc-rich coating used for?",
+      "in_domain": true,
+      "answer": "Zinc-rich coatings are used to provide excellent galvanic protection in aggressive environments. They are applied to protect ship hull superstructures, marine structures, highway bridges, chemical plant equipment, and other installations exposed to high humidity and salt [Paint and Coatings Applications and Corrosion Resistance, p. 137].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 24.64,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es la corrosión por picadura?",
+      "in_domain": true,
+      "answer": "According to the provided excerpts, there is no specific information about \"corrosión por picadura\". The corrosion described mainly focuses on general corrosion processes and mechanisms. Therefore, based solely on the given texts, I cannot provide a detailed explanation of what corrosion by piercing or perforation (picadura in Spanish) entails.\n\nHowever, it's known from basic chemical principles that corrosion can occur locally around small openings or piercings in metal surfaces due to localized conditions promoting electrochemical reactions. This localized form could be considered related but isn't explicitly defined in the given sources. [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 124-125]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 33.34,
+      "keyword_hit": false,
+      "book_hit": false,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is cathodic protection?",
+      "in_domain": true,
+      "answer": "Cathodic Protection (CP) is a technology used to economically control corrosion on the bottoms of above-ground storage tanks that are in contact with sand pads or soil. It works through an electrochemical process where a direct electrical current is passed to the metal surface using electrodes installed in the electrolyte adjacent to, or near, the tank [Cathodic_Protection, Unknown, p. 1].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 29.28,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es la corrosión galvánica?",
+      "in_domain": true,
+      "answer": "La corrosión galvánica es un tipo de corrosión acelerada que ocurre cuando hay contacto eléctrico entre dos metales o conductores no metálicos en un medio conductor (electrolito). En este proceso, el metal menos noble actúa como ánodo y sufre la corrosión sacrificial, mientras que el metal más noble actúa como cátodo recibiendo electrones y protegiéndose de la corrosión [Glossary, G, p. 12].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 27.9,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What causes stress corrosion cracking?",
+      "in_domain": true,
+      "answer": "Stress corrosion cracking (SCC) develops when a tough polymer is stressed for an extended period under loads that are small relative to the polymer’s yield point [Libro Corrosion of Linings and Coatings - Schweitzer, Chapter 6. Sheet Linings, p. 309-311]. The likelihood of SCC decreases with higher molecular weight polymers, as longer chains confer greater load-bearing capacity [ibid]. Additionally, environmental factors such as temperature, the presence of specific chemicals (like halogenated compounds), and the condition of the polymer's crystallinity also influence this phenomenon [ibid].\n\nSCC is induced by a combination of tensile stress and a corrosive medium [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 355-357]. Factors contributing to SCC include static or cyclic tensile stresses, the nature of the aqueous corrosive environment, temperature, and specific alloy characteristics [ibid]. The cracking morphology can be either transgranular or intergranular, with certain alloys being more susceptible under different conditions [ibid].\n\nMoreover, stress corrosion cracking in zirconium has been observed in concentrated methanol solutions containing heavy metal chlorides, gaseous iodine, or fused salts with iodine, even though zirconium is generally resistant to such cracking in other environments [Handbook of Corrosion Engineering, 8. Materials Selection, p. 785-786].",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 47.75,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué son los inhibidores de corrosión?",
+      "in_domain": true,
+      "answer": "Los inhibidores de corrosión son sustancias químicas que, cuando se añaden en concentraciones pequeñas a un entorno, efectivamente disminuyen la velocidad del proceso de corrosión [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 213-214].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 34.8,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Cuál es la capital de Mongolia?",
+      "in_domain": false,
+      "answer": "La información proporcionada no contiene datos sobre la capital de Mongolia. Los documentos muestran datos relacionados con pinturas, revestimientos y solventes, incluyendo puntos de fusión, densidades, viscosidades y valores de pH, pero no se menciona ninguna información geográfica o política. Para responder a su pregunta, la capital de Mongolia es Ulaanbaatar.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 40.43,
+      "fabricated_citation": false
+    },
+    {
+      "query": "What's a good recipe for chocolate cake?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain any information related to recipes or chocolate cake. Therefore, I cannot provide a response based on the given text. [Tesis 2008 SintesisyCaracterización de Mganetita pura dopada con cerio y titanio, Unknown, p. 34-44]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 35.73,
+      "fabricated_citation": true
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2022?",
+      "in_domain": false,
+      "answer": "The information provided in the excerpts is related to surface coatings, adhesion promoters, radiation curing, and magnetite synthesis, but does not contain any information about football or soccer world cups. Therefore, I cannot answer the question \"¿Quién ganó el mundial de fútbol de 2022?\" based on the given texts.\n\nThe excerpts do not provide relevant data to determine the winner of the 2022 FIFA World Cup.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 36.68,
+      "fabricated_citation": false
+    },
+    {
+      "query": "What is the best programming language for web development?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain information about programming languages suitable for web development. Therefore, I cannot answer this question based on the given text.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 31.56,
+      "fabricated_citation": false
+    },
+    {
+      "query": "¿Cuántos planetas tiene el sistema solar?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain information about the number of planets in the solar system. They seem to be related to a thesis on magnetite, possibly discussing surface treatments or coatings, but do not address planetary science.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 30.41,
+      "fabricated_citation": false
+    }
+  ]
+}

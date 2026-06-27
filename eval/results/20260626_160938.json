@@ -1,0 +1,183 @@
+{
+  "summary": {
+    "n_in_domain": 10,
+    "n_out_of_domain": 5,
+    "keyword_hit_rate": 0.8,
+    "book_hit_rate": 0.44,
+    "citation_validity_rate": 0.3,
+    "out_of_domain_refusal_rate": 1.0,
+    "out_of_domain_fabricated_citation_rate": 0.8,
+    "avg_latency_seconds": 41.17
+  },
+  "records": [
+    {
+      "query": "What is polyurea used for in protective coatings?",
+      "in_domain": true,
+      "answer": "Polyurea is often used in applications where enhanced properties such as crack bridging, toughness, corrosion or abrasion resistance are required. This includes the use of spray-applied polyurethane or polyurea elastomeric coatings on substrates like metal, concrete, wood, and plastic [5.10, p. 467-468].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 38.23,
+      "keyword_hit": true,
+      "book_hit": false,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es el Parylene y para qué se usa como recubrimiento?",
+      "in_domain": true,
+      "answer": "Las excerptos proporcionados no contienen información sobre el Parylene ni sus aplicaciones como recubrimiento. Estos pasajes se centran en la tecnología de pinturas y recubrimientos, incluyendo compuestos como polímeros, resinas y sistemas de curado, pero no mencionan específicamente al Parylene.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 27.62,
+      "keyword_hit": false,
+      "book_hit": false,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What are thermoplastic elastomers?",
+      "in_domain": true,
+      "answer": "Thermoplastic elastomers (TPEs) are materials that are processed in the same manner as conventional thermoplastics but give a finished article with properties and performance similar to those of a thermoset rubber [Tracton, 2007, Chapter 10, p. 10-1]. They consist of chemically cross-linked rubber phases embedded within a continuous matrix of thermoplastic polymers. This structure gives TPEs better mechanical properties compared to simple rubber/thermoplastic blends with minimal or no cross-linking [Tracton, 2007, Chapter 10, p. 10-1].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 35.29,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué función cumple un primer en un sistema de recubrimiento?",
+      "in_domain": true,
+      "answer": "El texto proporcionado no contiene información específica sobre la función exacta que desempeña un \"primer\" en un sistema de recubrimiento. Por lo tanto, no puedo hacer una afirmación precisa basada en los fragmentos dados [Book, Chapter, p. X-Y].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 24.9,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What is a zinc-rich coating used for?",
+      "in_domain": true,
+      "answer": "Zinc-rich coatings are used primarily for providing excellent galvanic protection in aggressive environments. They are particularly useful for protecting ship hull superstructures, marine structures, highway bridges, chemical plant equipment, and other installations exposed to high humidity and salt [Paint and coatings applications and corrosion resistance, 6. Coating Materials (Paints), p. 137-138].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 39.5,
+      "keyword_hit": true,
+      "book_hit": false,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es la corrosión por picadura?",
+      "in_domain": true,
+      "answer": "The excerpts provided do not contain specific information about \"corrosión por picadura\" (pitted corrosion). The materials mentioned discuss general aspects of corrosion, mechanisms, and types such as chemical and electrochemical corrosion, but they do not delve into the specifics of pitted corrosion. Therefore, based on the given content, I cannot provide a detailed explanation or definition of pitted corrosion. [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 124-125]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 46.74,
+      "keyword_hit": false,
+      "book_hit": false,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is cathodic protection?",
+      "in_domain": true,
+      "answer": "Cathodic Protection (CP) is a technology used to control corrosion on the bottoms of above-ground storage tanks that are in contact with sand pads or soil. It works through an electrochemical process where direct electrical current is passed to the metal surface from electrodes installed in the electrolyte adjacent to, or near, the tank [Cathodic_Protection, Unknown, p. 1].\n\nThis method involves creating a galvanic cell by connecting a more reactive (anode) material to the structure that needs protection (cathode). The current flows from the anode through the electrolyte to the cathode, which reduces the corrosion rate of the protected metal [Libro Corrosion of Linings and Coatings - Schweitzer, Chapter 2. Cathodic Protection, p. 60-61].\n\nThe effectiveness of CP can be measured using tank-to-soil potential measurements taken close to the tank bottom, though this requires precise placement of a reference electrode near the protected area [Cathodic_Protection, Unknown, p. 1].",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 51.43,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es la corrosión galvánica?",
+      "in_domain": true,
+      "answer": "La corrosión galvánica es un tipo de corrosión acelerada que ocurre cuando se produce un contacto eléctrico entre dos metales disímiles en un electrólito. En este proceso, un metal (llamado ánodo galvánico) proporciona protección sacrificial a otro metal más noble al actuar como fuente de electrones [GALVANIC ANODE, GLOSSARY, p. 12]. Este tipo de corrosión es el resultado de la diferencia en las potencialidades de corrupción entre los metales [GALVANIC SERIES, GLOSSARY, p. 12].\n\nAdemás, se describe que la corrosión galvánica puede presentarse en diferentes formas, como ataque uniforme o ataque de surcos [CORROSION, DEPOSITION TECHNOLOGIES FOR FILM AND COATINGS, p. 766-767].",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 43.26,
+      "keyword_hit": true,
+      "book_hit": false,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What causes stress corrosion cracking?",
+      "in_domain": true,
+      "answer": "Stress corrosion cracking (SCC) develops when a tough polymer is stressed for an extended period under loads that are small relative to the polymer’s yield point [Corrosion of Linings and Coatings, Schweitzer, p. 309]. The higher the molecular weight of the polymer, other things being equal, the less likelihood of environmental stress cracking [ibid, p. 310-311]. Additionally, factors such as the presence of contaminants in a fluid may act as an accelerator for SCC; for example, polypropylene can safely handle sulfuric or hydrochloric acids, but iron or copper contamination in concentrated solutions of these acids can result in stress cracking [ibid, p. 310].\n\nThe mechanism involves tensile stresses and corrosive media working together to induce cracks. Environmental factors like temperature and the presence of specific alloying elements also play a role; for instance, certain mechanical treatments can induce high residual stresses that may lead to SCC initiation in materials [9711mpab, Streicher, p. 2].\n\nIn zirconium alloys, stress corrosion cracking (SCC) has been observed in concentrated methanol solutions containing heavy metal chlorides, gaseous iodine, or fused salts with iodine, even though these materials are generally resistant to SCC in other environments [Handbook of Corrosion Engineering, p. 357].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 57.05,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué son los inhibidores de corrosión?",
+      "in_domain": true,
+      "answer": "Los inhibidores de corrosión son sustancias químicas que, cuando se añaden en concentraciones pequeñas a un entorno, eficazmente reducen la tasa de corrosión. [Handbook of Corrosion Engineering, Corrosion Inhibitors, p. 839-840]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 39.75,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Cuál es la capital de Mongolia?",
+      "in_domain": false,
+      "answer": "No se puede responder a esta pregunta utilizando solo los excerptos proporcionados, ya que estos están relacionados con pinturas, revestimientos y solvents, y no contienen información sobre geografía o capitales de países. [Libro Paints, Coatings and Solvents, 2nd Ed, 3527288635, Chapter14, p. 355]",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 47.43,
+      "fabricated_citation": false
+    },
+    {
+      "query": "What's a good recipe for chocolate cake?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain any information related to recipes or chocolate cake. They appear to discuss scientific topics such as synthesis and characterization of materials, which are unrelated to the question about a chocolate cake recipe. Therefore, I cannot provide a recipe based on this information. [Tesis 2008 SintesisyCaracterización de Mganetita pura dopada con cerio y titanio, Unknown, p. 36-44]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 42.59,
+      "fabricated_citation": true
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2022?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain any information related to the winner of the 2022 FIFA World Cup. They seem to be related to chemical reactions, surface coatings, and polymer science but do not address the question about football. Therefore, I cannot answer this specific question using only the given information [Tesis 2008 SintesisyCaracterización de Mganetita pura dopada con cerio y titanio, Unknown, p. 9-10].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 42.32,
+      "fabricated_citation": true
+    },
+    {
+      "query": "What is the best programming language for web development?",
+      "in_domain": false,
+      "answer": "The excerpts provided do not contain information relevant to determining the best programming language for web development. Therefore, I cannot answer this question based on the given text.\n\n[Paint and Surface Coatings, Chapter 20, p. 711-712] does discuss computer modeling in paint formulation but does not address web development languages. The other excerpts are related to a thesis about magnetite synthesis and do not mention programming or web development at all.",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 40.83,
+      "fabricated_citation": true
+    },
+    {
+      "query": "¿Cuántos planetas tiene el sistema solar?",
+      "in_domain": false,
+      "answer": "Los excerptos proporcionados no contienen información sobre el número de planetas en el sistema solar. Estos pasajes parecen estar relacionados con experimentos o cálculos matemáticos relacionados con magnetita dopada, pero no abordan la pregunta acerca del número de planetas en el sistema solar [Tesis 2008 SintesisyCaracterización de Mganetita pura dopada con cerio y titanio, Unknown, p. 40-154].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 40.58,
+      "fabricated_citation": true
+    }
+  ]
+}

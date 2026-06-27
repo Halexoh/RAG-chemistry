@@ -1,4 +1,11 @@
-from src.extraction.chapters import chapter_from_filename, chapter_map_from_toc, structural_label_from_filename
+from src.extraction.chapters import (
+    chapter_from_filename,
+    chapter_map_from_toc,
+    dedupe_versioned_chapters,
+    drop_exact_duplicate_files,
+    structural_label_from_filename,
+    version_suffix,
+)
 
 
 def test_chapter_from_filename_extracts_number_suffix_style():
@@ -21,6 +28,22 @@ def test_chapter_from_filename_extracts_underscore_numbered_style():
 def test_chapter_from_filename_extracts_part_style():
     assert chapter_from_filename("part 1 - paint composition and applications.pdf") == "1"
     assert chapter_from_filename("part10- automotive paints.pdf") == "10"
+
+
+def test_chapter_from_filename_extracts_spanish_cap_and_sec_style():
+    assert chapter_from_filename("Cap_01_Introduccion.pdf") == "1"
+    assert chapter_from_filename("Cap_02_Composicion_del_Recubrimiento_Anticorrosivo.pdf") == "2"
+    assert chapter_from_filename("Cap_05a_Tipos_de_Recubrimientos_Parte1.pdf") == "5"
+    assert chapter_from_filename("Cap_05b_Tipos_de_Recubrimientos_Parte2.pdf") == "5"
+    assert chapter_from_filename("Sec_01_Introduccion.pdf") == "1"
+    assert chapter_from_filename("Sec_10_Sistemas_de_Recubrimiento.pdf") == "10"
+
+
+def test_chapter_from_filename_does_not_false_positive_on_cap_sec_prefix_words():
+    # "Capacitor"/"Security" etc. start with "cap"/"sec" but aren't followed
+    # by a chapter number — must not be mistaken for "Cap_<N>"/"Sec_<N>".
+    assert chapter_from_filename("Capacitor properties of coatings.pdf") is None
+    assert chapter_from_filename("Security assessment of pipelines.pdf") is None
 
 
 def test_chapter_from_filename_returns_none_for_non_chapter_files():
@@ -62,6 +85,55 @@ def test_structural_label_from_filename_none_for_real_titled_chapter():
     assert structural_label_from_filename("An Aspect of Concrete Protection by Surface Coating.pdf") is None
 
 
+def test_structural_label_from_filename_underscore_heavy_spanish_names():
+    # Same words as the space-separated Spanish tests above, but in the
+    # all-underscore convention this personal archive uses throughout.
+    assert structural_label_from_filename("00_Portada.pdf") == "Front Matter"
+    assert structural_label_from_filename("00_Portada_y_Serie_Editorial.pdf") == "Front Matter"
+    assert structural_label_from_filename("00_Prefacio.pdf") == "Preface"
+    assert structural_label_from_filename("00_Prefacio_1a_Edicion.pdf") == "Preface"
+    assert structural_label_from_filename("00_Prefacio_2a_Edicion.pdf") == "Preface"
+    assert structural_label_from_filename("00_Tabla_de_Contenido.pdf") == "Table of Contents"
+    assert structural_label_from_filename("00_Tabla_de_Contenido_e_Indice.pdf") == "Table of Contents"
+    assert structural_label_from_filename("00_Contenido.pdf") == "Table of Contents"
+
+
+def test_structural_label_from_filename_zz_prefix_for_trailing_sections():
+    assert structural_label_from_filename("ZZ_Indice.pdf") == "Index"
+    assert structural_label_from_filename("ZZ_Glosario.pdf") == "Glossary"
+    assert structural_label_from_filename("ZZ_Referencias.pdf") == "References"
+    assert structural_label_from_filename("ZZ_Directorio_de_Proveedores.pdf") == "Supplement"
+
+
+def test_version_suffix_extracts_explicit_version_or_defaults_to_one():
+    assert version_suffix("Cap_01b_Introduccion_v2.pdf") == 2
+    assert version_suffix("Cap_01_Introduccion.pdf") == 1
+    assert version_suffix("Cap_07b_Ensayos_Corrosion_Fundamentos_v2.pdf") == 2
+
+
+def test_dedupe_versioned_chapters_keeps_only_highest_version_when_marked():
+    # Forsgren case: an original file plus a "_v2" re-export of the same
+    # content — the original should be dropped, not kept alongside it.
+    by_chapter = {
+        "1": ["Cap_01_Introduccion.pdf", "Cap_01b_Introduccion_v2.pdf"],
+    }
+    result = dedupe_versioned_chapters(by_chapter)
+    assert result["1"] == ["Cap_01b_Introduccion_v2.pdf"]
+
+
+def test_dedupe_versioned_chapters_keeps_all_genuine_subparts_when_unmarked():
+    # Weldon case: "05a"/"05b" are different content (Parte1/Parte2), no
+    # "_vN" marker anywhere — nothing should be dropped.
+    by_chapter = {
+        "5": ["Cap_05a_Tipos_de_Recubrimientos_Parte1.pdf", "Cap_05b_Tipos_de_Recubrimientos_Parte2.pdf"],
+    }
+    result = dedupe_versioned_chapters(by_chapter)
+    assert result["5"] == [
+        "Cap_05a_Tipos_de_Recubrimientos_Parte1.pdf",
+        "Cap_05b_Tipos_de_Recubrimientos_Parte2.pdf",
+    ]
+
+
 class FakeDoc:
     """Minimal stand-in for fitz.Document — just enough for chapter_map_from_toc."""
 
@@ -92,3 +164,42 @@ def test_chapter_map_from_toc_resolves_missing_pages():
 
 def test_chapter_map_from_toc_returns_empty_dict_when_no_toc():
     assert chapter_map_from_toc(FakeDoc([], page_count=10)) == {}
+
+
+def test_chapter_map_from_toc_returns_empty_dict_when_toc_is_pure_navigation_links():
+    # A short article PDF whose "TOC" is just navigation bookmarks (a real
+    # case found in a personal archive's standalone documents) — every
+    # entry sits at page -1 with no sibling anywhere to borrow a page
+    # from, so nothing in it is usable as a chapter map.
+    toc = [
+        [1, "NACE Home Page", -1],
+        [1, "FAQs", -1],
+        [1, "Search Site", -1],
+    ]
+    assert chapter_map_from_toc(FakeDoc(toc, page_count=2)) == {}
+
+
+def test_drop_exact_duplicate_files_removes_byte_identical_copies(tmp_path):
+    # Real case: "Sec_11_Miscelaneos.pdf" and "Sec_11b_Miscelaneos_cont.pdf"
+    # in the same book — the "_cont" name implies different content, but
+    # they were an exact copy-paste accident. No "_vN" marker involved, so
+    # dedupe_versioned_chapters() alone wouldn't catch this.
+    a = tmp_path / "Sec_11_Miscelaneos.pdf"
+    b = tmp_path / "Sec_11b_Miscelaneos_cont.pdf"
+    a.write_bytes(b"same content")
+    b.write_bytes(b"same content")
+
+    kept = drop_exact_duplicate_files([a, b])
+
+    assert kept == [a]
+
+
+def test_drop_exact_duplicate_files_keeps_genuinely_different_content(tmp_path):
+    a = tmp_path / "Cap_05a_Parte1.pdf"
+    b = tmp_path / "Cap_05b_Parte2.pdf"
+    a.write_bytes(b"part one content")
+    b.write_bytes(b"part two content")
+
+    kept = drop_exact_duplicate_files([a, b])
+
+    assert sorted(kept) == sorted([a, b])

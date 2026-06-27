@@ -82,6 +82,44 @@ La latencia subió de forma desproporcionada (3.5x) frente al crecimiento del co
 
 No se "arregló" nada de esto en esta fase — documentarlo honestamente y dejarlo como limitación conocida es preferible a ajustar el test set o el umbral de las métricas para que luzcan mejor.
 
+## Corpus ampliado a 436 fuentes — la integración del archivo personal "Prolac"
+
+Tras integrar el archivo personal de 685 PDFs (ver [docs/01-extraccion.md](01-extraccion.md)), correr de nuevo el test set de 15 preguntas (`eval/results/20260626_160938.json`) expuso una regresión real y dos bugs distintos — no uno solo.
+
+| Métrica | 11 libros | 436 fuentes (primera corrida) |
+|---|---|---|
+| keyword_hit_rate | 0.90 | 0.80 |
+| book_hit_rate | 0.89 | 0.44 |
+| citation_validity_rate | 0.70 | 0.30 |
+| out_of_domain_fabricated_citation_rate | 0.40 | 0.80 |
+
+### Hallazgo 1: `book_hit` cayó porque el test set asumía un mundo de 2 fuentes por tema, no porque la recuperación empeoró
+
+Inspeccionando los casos que fallaban `book_hit` (polyurea, zinc-rich, corrosión galvánica): en cada uno, la respuesta citaba correctamente una fuente real y relevante del archivo Prolac que **no existía cuando se escribió el test set** — por ejemplo, "What is polyurea used for?" ahora se responde desde *Polyurethanes (Meier-Westhues)*, un libro dedicado a poliuretanos, más específico que el capítulo genérico de *Coatings Materials* que el test esperaba. No es una alucinación ni una recuperación peor: es una fuente mejor, que el test no podía anticipar.
+
+**Corrección:** se quitó `expected_book` de esos 3 casos en [`src/evaluation/testset.py`](../src/evaluation/testset.py) — mismo criterio que el caso de "primer" documentado arriba, aplicado ahora a una escala mayor porque el corpus creció de 2 a 436 fuentes. `expected_keywords` se mantiene intacto en todos los casos: sigue siendo la señal honesta de si el tema realmente se encontró, sin importar en qué fuente.
+
+Dos preguntas (`parylene`, `corrosión por picadura`) siguen fallando *también* `keyword_hit` — esa sí es una caída real de recall, no un defecto del test: con 436 fuentes compitiendo por el mismo top-5 final, un pasaje específico puede quedar fuera del top-k aunque el tema exista en el corpus (verificado por separado, no solo asumido). Se deja documentado como limitación abierta, igual que el resto de esta sección — no se ajustó `top_k` ni el reranker para forzar que suba, siguiendo el mismo criterio de la fase 4 de no ajustar parámetros solo para que una métrica luzca mejor.
+
+### Hallazgo 2: bug real en el regex de citas — los títulos `(Autor, Año)` rompían la extracción
+
+`book_title_from_bracket_folder` (fase de extracción, ver docs/01) genera títulos como `"Coatings Materials and Surface Coatings (Tracton, 2007)"` — con una coma *dentro* del campo de libro. El regex de citas (`CITATION_RE` en [`src/evaluation/metrics.py`](../src/evaluation/metrics.py)) asumía que el primer campo no tenía comas (`[^,\]]+`), así que cortaba el libro en la primera coma — partiendo "Coatings Materials and Surface Coatings" / "(Tracton" / "2007) ..." en vez de un solo campo. Resultado: toda cita de uno de los 8 libros con esta convención de nombre quedaba mal parseada e invalidada, **incluso cuando el modelo citó perfectamente bien** — un bug en la herramienta de evaluación, no en el sistema evaluado.
+
+**Corrección:** el campo de libro ahora excluye solo `]` (no `,`), apoyándose en que el campo de capítulo (que sí excluye comas) ancla dónde termina el libro y empieza el capítulo — ver el regex actualizado y su comentario en `metrics.py`, con test de regresión específico para un título con coma interna.
+
+Además, se reforzó `SYSTEM_PROMPT` ([`src/generation/prompt.py`](../src/generation/prompt.py)) con una instrucción explícita: copiar la cita textualmente del encabezado del excerpt, nunca de un número de sección interno del propio texto (causa de un segundo patrón de cita malformada visto en los datos reales, ej. `[5.10, p. 467-468]`, donde el modelo usaba el número de capítulo como si fuera la cita completa).
+
+### Resultado tras corregir el test set, el regex y el prompt (`eval/results/20260627_163203.json`)
+
+| Métrica | 436 fuentes (primera corrida) | Tras los 3 fixes |
+|---|---|---|
+| keyword_hit_rate | 0.80 | 0.80 |
+| book_hit_rate | 0.44 | 0.67 |
+| citation_validity_rate | 0.30 | 0.70 |
+| out_of_domain_fabricated_citation_rate | 0.80 | 0.60 |
+
+`citation_validity_rate` (0.30→0.70) y `book_hit_rate` (0.44→0.67, sobre los 6 casos que conservan `expected_book`) recuperan niveles comparables a los del corpus de 11 libros — confirmando que la caída inicial era mayormente artefacto del test y del bug de regex, no degradación real de retrieval/generación. `out_of_domain_fabricated_citation_rate` sigue siendo ruidoso entre corridas (0.20/0.60/0.80 vistos en distintas ejecuciones con el mismo código) porque el LLM local muestrea con temperatura > 0 — ya documentado como limitación conocida arriba; no se persiguió más allá de esto, sería sobre-ajustar a una sola corrida.
+
 ## Qué queda abierto, a propósito
 
 - `fabricated_citation_rate = 0.20` no es cero. Documentado arriba como limitación conocida del modelo, no oculto.

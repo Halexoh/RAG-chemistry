@@ -32,6 +32,13 @@ Al sumar 9 libros más (ver actualización en [docs/01-extraccion.md](01-extracc
 - 6957 chunks totales → **6074 indexados**, **883 excluidos** (12.7% — bibliografía + estructurales combinados).
 - El porcentaje de exclusión subió respecto a la carga inicial (5.5%→12.7%) principalmente porque varios de los libros nuevos vienen de editoriales que separan front matter/prefacio/referencias en archivos completos dedicados (filtrados al 100% por nombre, sin depender del heurístico de texto), no porque el filtro de bibliografía por regex se haya vuelto más agresivo.
 
+### Corpus tras integrar el archivo personal "Prolac" (436 fuentes)
+
+Ver [docs/01-extraccion.md](01-extraccion.md) para el detalle completo de la integración (685 PDFs propios, distinción libro/categoría, nuevas convenciones de nombre, dedup por hash).
+
+- 24110 chunks totales → **22386 indexados**, **1724 excluidos** (7.2% — bibliografía + estructurales combinados).
+- El porcentaje de exclusión *bajó* respecto al corpus de 11 libros (12.7%→7.2%), al contrario de lo que se podría esperar al sumar mucho más contenido. Razón: la mayoría de las 428 fuentes independientes nuevas son documentos cortos (fichas técnicas de proveedores, papers de pocas páginas) sin una sección de bibliografía/índice/front-matter propia que filtrar — a diferencia de los libros completos, que sí las tienen. Más fuentes no implica automáticamente más ruido estructural; depende de qué tipo de documento se está sumando.
+
 ## Hallazgo de infraestructura: segfault por orden de import de FAISS vs. PyTorch
 
 Al correr la evaluación completa sobre el corpus ampliado, el proceso empezó a terminar con un **segmentation fault** (exit code 139) — no solo lento, sino crasheando. Diagnosticado con `sample` (herramienta de macOS para perfilar procesos), el stack trace mostró el hilo bloqueado en `MTLCommandBuffer waitUntilCompleted` (GPU vía Metal), lo cual inicialmente parecía un deadlock entre el reranker (MPS) y Ollama compitiendo por GPU.

@@ -1,0 +1,180 @@
+{
+  "summary": {
+    "n_in_domain": 10,
+    "n_out_of_domain": 5,
+    "keyword_hit_rate": 0.8,
+    "book_hit_rate": 0.67,
+    "citation_validity_rate": 0.7,
+    "out_of_domain_refusal_rate": 0.6,
+    "out_of_domain_fabricated_citation_rate": 0.6,
+    "avg_latency_seconds": 14.5
+  },
+  "records": [
+    {
+      "query": "What is polyurea used for in protective coatings?",
+      "in_domain": true,
+      "answer": "Polyurea is often used in protective coatings for applications where enhanced properties such as crack bridging, toughness, corrosion or abrasion resistance are required. Common uses include pipes and tanks for wastewater infrastructure, roofing protection, bridge deck waterproofing, and truck bedliners for both personal and industrial use [5.10, p. 467-48].",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 14.19,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es el Parylene y para qué se usa como recubrimiento?",
+      "in_domain": true,
+      "answer": "Based on the provided excerpts, there is no information about Parylene or its use as a coating. The references focus primarily on liquid coatings and their components like resins, solvents, and curing agents, but do not mention Parylene [Tecnología Alquídicos, Unknown, p. 1-2], [info alquidica, Unknown, p. 1-2], [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 21-22], [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 56-57], [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 59-61].",
+      "n_sources": 5,
+      "n_citations": 5,
+      "is_refusal": true,
+      "elapsed_seconds": 23.4,
+      "keyword_hit": false,
+      "book_hit": false,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What are thermoplastic elastomers?",
+      "in_domain": true,
+      "answer": "Thermoplastic elastomers (TPEs) are materials that can be processed in the same manner as conventional thermoplastics but offer performance and properties similar to those of thermoset rubbers. Specifically, a thermoplastic vulcanizate (TPV), which is also referred to as an elastomeric alloy in some earlier literature, is a generic class of TPEs with a chemically cross-linked rubber phase dispersed within a continuous matrix of thermoplastic material [Coatings Materials and Surface Coatings (Tracton, 2007), Chapter 10, p. 1-2].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 9.43,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué función cumple un primer en un sistema de recubrimiento?",
+      "in_domain": true,
+      "answer": "Un primer en un sistema de recubrimiento generalmente se refiere a un preparador de superficie o imprimación, que sirve para mejorar las propiedades de adherencia y porosidad del material base, permitiendo que el recubrimiento se aplique de manera más efectiva. Sin embargo, no hay información específica en losexcerptos proporcionados sobre la función exacta de un \"primer\". Los textos mencionan preparación de superficie y imprimaciones pero no se detallan roles específicos para una fase denominada “primer” [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 110].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 22.71,
+      "keyword_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is a zinc-rich coating used for?",
+      "in_domain": true,
+      "answer": "Zinc-rich coatings are used to provide excellent galvanic protection in aggressive environments. They are particularly useful for protecting ship hull superstructures, marine structures, highway bridges, chemical plant equipment, and other installations exposed to high humidity and salt [Book, Chapter, p. 138]. Additionally, they can be used to repair galvanized or inorganic zinc-rich coatings [Book, Chapter, p. 137].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 7.55,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "¿Qué es la corrosión por picadura?",
+      "in_domain": true,
+      "answer": "El texto proporcionado no contiene información específica sobre lo que es la corrosión por picadura. Los pasajes hablan sobre la corrosión general, el mecanismo de la corrosión electroquímica y la preparación de superficies con hidrochorreo, pero no mencionan la corrosión por picadura [Libro Pinturas_y_recubrimientos_Giúdice, II.14 RESINAS DE SILICONA, p. 125].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 8.43,
+      "keyword_hit": false,
+      "book_hit": false,
+      "all_citations_valid": true
+    },
+    {
+      "query": "What is cathodic protection?",
+      "in_domain": true,
+      "answer": "Cathodic Protection is an electrochemical process used to protect metals from corrosion. It works by passing a direct electrical current to the metal surface, which can be achieved through either galvanic or impressed current systems [Cathodic_Protection, Unknown, p. 1]. This method helps in arresting corrosion on structures like above-ground storage tanks that are in contact with sand pads or soil [Cathodic_Protection, Unknown, p. 1].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 7.97,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué es la corrosión galvánica?",
+      "in_domain": true,
+      "answer": "La corrosión galvánica es un tipo de corrosión acelerada que ocurre cuando se produce un contacto eléctrico entre dos metales o conductores no metálicos en un medio conductor, también conocido como electrólito [GLOSSARY, G, p. 12]. Este fenómeno se caracteriza porque el metal menos noble (el anodo) actúa como fuente de electrones, mientras que el metal más noble (el cátodo) es corrosivo debido a su reacción con el medio conductor [Deposition Technologies for Films and Coatings, Chapter 14, p. 766-767].",
+      "n_sources": 5,
+      "n_citations": 2,
+      "is_refusal": false,
+      "elapsed_seconds": 10.27,
+      "keyword_hit": true,
+      "all_citations_valid": false
+    },
+    {
+      "query": "What causes stress corrosion cracking?",
+      "in_domain": true,
+      "answer": "Stress corrosion cracking (SCC) develops when a tough polymer is stressed for an extended period under loads that are small relative to the polymer’s yield point [Libro Corrosion of Linings and Coatings - Schweitzer, Chapter 6. Sheet Linings, p. 309-311]. The higher the molecular weight of the polymer, other things being equal, the less likelihood there is of environmental stress cracking since longer chain polymers tend to crystallize less and have greater load-bearing capacity [ibid].\n\nSCC occurs from the combined influence of tensile stress and a corrosive medium [Handbook of Corrosion Engineering, 5. Corrosion Failures, p. 355-357]. The presence of trace impurities such as hydrogen, nitrogen, or oxygen can affect the susceptibility to SCC in specific molten metals [ibid].\n\nZirconium alloys are susceptible to stress-corrosion cracking (SCC) under certain conditions, particularly in concentrated methanol solutions containing heavy metal chlorides, gaseous iodine, or fused salts with iodine, even though zirconium and its alloys are generally resistant to SCC in seawater and most aqueous chemical media [Handbook of Corrosion Engineering, 8. Materials Selection, p. 785-786].",
+      "n_sources": 5,
+      "n_citations": 3,
+      "is_refusal": false,
+      "elapsed_seconds": 19.66,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Qué son los inhibidores de corrosión?",
+      "in_domain": true,
+      "answer": "Los inhibidores de corrosión son sustancias químicas que, cuando se añaden en concentraciones pequeñas a un medio ambiente, efectivamente reducen la velocidad del proceso de corrosión [Libro Pinturas_y_recubrimientos_Giúdice, Unknown, p. 213-214].",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": false,
+      "elapsed_seconds": 7.25,
+      "keyword_hit": true,
+      "book_hit": true,
+      "all_citations_valid": true
+    },
+    {
+      "query": "¿Cuál es la capital de Mongolia?",
+      "in_domain": false,
+      "answer": "La información proporcionada no incluye datos sobre la capital de Mongolia, por lo que no se puede responder a esta pregunta con los detalles dados.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": false,
+      "elapsed_seconds": 40.99,
+      "fabricated_citation": false
+    },
+    {
+      "query": "What's a good recipe for chocolate cake?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain any information related to recipes or chocolate cakes. Therefore, I cannot answer the question based on the given content. [Tesis 2008 SintesisyCaracterización de Mganetita pura dopada con cerio y titanio, Unknown, p. 100]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 8.66,
+      "fabricated_citation": true
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2022?",
+      "in_domain": false,
+      "answer": "The information provided in the excerpts is not related to football or soccer winners. Therefore, I cannot answer the question about who won the 2022 World Cup using only the given text.\n\n[Surface Coatings, Unknown, p. 68-69] - The excerpt discusses surface coatings and does not mention any sports events.\n[Radiation Curing In Polymer Science And Technologypdf, Unknown, p. 590] - This excerpt is about radiation curing in polymer science and technology, unrelated to the question.\n[Surface Coatings, Unknown, p. 70] - Also discusses surface coatings with no mention of sports.\n[Tesis 2008 SintesisyCaracterización de Mganetita pura dopada con cerio y titanio, Unknown, p. 9-10] - This is about the synthesis and characterization of magnetite doped with cerium and titanium, unrelated to football.\n\nNone of these excerpts provide information relevant to answering the question about who won the 2022 World Cup.",
+      "n_sources": 5,
+      "n_citations": 4,
+      "is_refusal": false,
+      "elapsed_seconds": 20.35,
+      "fabricated_citation": true
+    },
+    {
+      "query": "What is the best programming language for web development?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain information related to web development or any recommendations for programming languages specifically suited for it. The text discusses modeling and simulation in paint and resin formulation using various programming languages like Basic, Fortran, Pascal, C++, as well as more specialized software tools but does not address web development requirements or language best practices for that domain. Therefore, I cannot answer the question based on the given information.",
+      "n_sources": 5,
+      "n_citations": 0,
+      "is_refusal": true,
+      "elapsed_seconds": 9.57,
+      "fabricated_citation": false
+    },
+    {
+      "query": "¿Cuántos planetas tiene el sistema solar?",
+      "in_domain": false,
+      "answer": "The provided excerpts do not contain any information related to the number of planets in the solar system. Therefore, I cannot answer this question based on the given text. [Tesis 2008 SintesisyCaracterización de Mganetita pura dopada con cerio y titanio, Unknown, p. 135-136]",
+      "n_sources": 5,
+      "n_citations": 1,
+      "is_refusal": true,
+      "elapsed_seconds": 7.03,
+      "fabricated_citation": true
+    }
+  ]
+}

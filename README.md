@@ -1,6 +1,6 @@
 # RAG-chemistry
 
-A Retrieval-Augmented Generation (RAG) system built **from scratch** (no LangChain/LlamaIndex) to answer questions over a library of chemistry-of-coatings textbooks (PDFs, split by chapter, mostly in English). Runs **100% locally** on Apple Silicon using Ollama, FAISS, and open embedding models — bilingual (Spanish/English) questions, answers always cite their exact source.
+A Retrieval-Augmented Generation (RAG) system built **from scratch** (no LangChain/LlamaIndex) to answer questions over a 436-source chemistry-of-coatings corpus: full textbooks, vendor data sheets, papers, and standards (mostly English, some Spanish), including a personal archive accumulated over years of professional coatings experience. Runs **100% locally** on Apple Silicon using Ollama, FAISS, and open embedding models — bilingual (Spanish/English) questions, answers always cite their exact source.
 
 This is a learning + portfolio project: every architectural decision — including the dead ends — is documented in [`docs/`](docs/), and the system was evaluated with real, verified test cases rather than left untested.
 
@@ -18,7 +18,7 @@ PDF chapters (native + scanned)
         │             filename or from the PDF's embedded TOC
         ▼
   2. Chunking     ── token-based chunks (600 tok, 100 overlap), never crossing a
-        │             chapter boundary; metadata: {book, chapter, page}
+        │             chapter boundary; metadata: {book, chapter, page, category}
         ▼
   3. Embeddings   ── multilingual-e5-base (local) — Spanish queries, English source
         │
@@ -41,13 +41,13 @@ From the latest evaluation run ([`docs/07-evaluacion.md`](docs/07-evaluacion.md)
 
 | Metric | Value |
 |---|---|
-| Keyword hit rate (in-domain) | 0.90 |
-| Correct-book hit rate (in-domain) | 0.89 |
+| Keyword hit rate (in-domain) | 0.80 |
+| Correct-book hit rate (in-domain, where a single source is still expected) | 0.67 |
 | Citation validity rate | 0.70 |
-| Refusal rate (out-of-domain) | 0.80 |
-| Fabricated-citation rate (out-of-domain) | 0.40 |
+| Refusal rate (out-of-domain) | 0.60-1.00 (varies run to run) |
+| Fabricated-citation rate (out-of-domain) | 0.20-0.80 (varies run to run) |
 
-Measured on an 11-book corpus (6957 chunks). Metrics are lower than an earlier 2-book run (1.00/1.00/0.80/1.00/0.20) — expected when scaling the corpus 5.5x without re-tuning `top_k` or the reranker: see [`docs/07-evaluacion.md`](docs/07-evaluacion.md) for the full comparison and why this isn't hidden or tuned away.
+Measured on a 436-source corpus (22386 indexed chunks) — 8 full books plus a 685-PDF personal archive (vendor data sheets, papers, standards) accumulated over years of professional coatings experience, integrated in a later phase (see [`docs/01-extraccion.md`](docs/01-extraccion.md)). Growing the corpus this much surfaced a real evaluation-tooling bug (a citation regex that broke on book titles containing a comma) and made the original 2-book test set's single-source assumptions stale for a few topics — both fixed, with the full before/after numbers and reasoning in [`docs/07-evaluacion.md`](docs/07-evaluacion.md). Out-of-domain metrics vary across runs because the local LLM samples at temperature > 0 — also documented there rather than smoothed over.
 
 **Example — in-domain, Spanish:**
 > *"¿Qué es la corrosión por picadura?"*
@@ -64,10 +64,12 @@ The evaluation phase found and fixed three real problems along the way (index pa
 ```
 RAG-chemistry/
 ├── README.md
+├── app.py                   # Streamlit chat UI over the pipeline
 ├── docs/                    # one file per phase: the why behind each decision
 ├── notebooks/
 │   └── pipeline_completo.ipynb   # interactive walkthrough with real outputs
-├── data/{raw,processed}/    # raw/ has source PDFs (not committed — copyright)
+├── data/{raw,processed}/    # raw/ has source PDFs and other documents
+│                            # (not committed — copyright + some confidential)
 ├── vectorstore/             # FAISS index + metadata (not committed — derived)
 ├── eval/results/            # evaluation run history (committed — small, no copyrighted data)
 ├── src/
@@ -105,7 +107,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-PDF source files are not committed to this repo (copyright). Drop your own book folders into `data/raw/<Book Title>/` — either one PDF per chapter, or a single PDF for the whole book (chapters are then derived from its embedded table of contents).
+PDF source files are not committed to this repo (copyright, plus some personal/confidential documents in this author's own archive). Drop a book into `data/raw/[Author_Year]_Title/` (brackets required) — either one PDF per chapter, or a single PDF for the whole book (chapters are then derived from its embedded table of contents). Anything in `data/raw/` *without* that bracket naming is instead treated as a folder of independent standalone documents (vendor data sheets, papers...), each cited by its own filename — see [`docs/01-extraccion.md`](docs/01-extraccion.md).
 
 ## Running the pipeline
 
@@ -116,10 +118,12 @@ python -m src.embeddings.run        # chunks.jsonl      -> embeddings.npy
 python -m src.indexing.build_index  # embeddings.npy    -> vectorstore/index.faiss
 python -m src.evaluation.run_eval   # runs the 15-question test set, saves a report
 
-pytest                                # 44 tests across every stage
+pytest                                # 65 tests across every stage
 ```
 
 Or open [`notebooks/pipeline_completo.ipynb`](notebooks/pipeline_completo.ipynb) for an interactive, explained walkthrough of every stage with real outputs from this corpus.
+
+For a chat UI instead: `streamlit run app.py` — a thin presentation layer over the same `answer_question()` used by the notebook and the evaluation suite, with a sources panel showing each citation's exact excerpt.
 
 ## Known limitations
 

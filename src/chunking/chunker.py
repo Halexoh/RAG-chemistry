@@ -62,6 +62,7 @@ def chunk_pages(
 
     book = pages[0]["book"]
     chapter = pages[0]["chapter"]
+    category = pages[0].get("category", "")
 
     tokens, page_of_token = _tokenize_pages(pages)
     if not tokens:
@@ -79,6 +80,7 @@ def chunk_pages(
             {
                 "book": book,
                 "chapter": chapter,
+                "category": category,
                 "page_start": chunk_page_range[0],
                 "page_end": chunk_page_range[-1],
                 "chunk_index": chunk_index,

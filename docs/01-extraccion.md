@@ -56,6 +56,41 @@ Nota deliberada: `_glo` (glosario) y `_supp` (suplemento) se mapean a etiquetas 
 
 Este formato (texto a nivel de página, con metadata completa) es la entrada de la fase de chunking — cada chunk hereda `book`/`chapter`/`page` de las páginas de las que proviene.
 
+## Integración del archivo personal "Prolac" (685 PDFs, 12 categorías temáticas)
+
+Hasta este punto, cada carpeta en `data/raw/` era un libro completo. La siguiente carga fue distinta: un archivo personal acumulado durante años de experiencia profesional en recubrimientos, organizado en 12 carpetas temáticas (`01_Corrosion_y_Proteccion`, `03_Materias_Primas`, etc.), cada una con una mezcla de libros completos, fichas técnicas de proveedores, papers, tesis y normas — algunas carpetas anidadas varios niveles.
+
+### Por qué no se puede distinguir "libro" de "carpeta de documentos sueltos" por la forma del contenido
+
+El primer intento fue un heurístico de forma: "una carpeta plana con muchos PDFs sueltos, sin subcarpetas, es un libro multi-archivo (como en la fase original)". Esto falla con datos reales: varias carpetas temáticas del archivo (ej. `07_Tecnologias_de_Resinas/Alquidicas`) son *exactamente* igual de planas — muchos PDFs sueltos, sin subcarpetas — pero son documentos independientes (fichas técnicas, papers), no capítulos de un mismo libro. Aplicar el heurístico de forma las habría fusionado en un único "libro" falso, citando una ficha técnica de poliuretano como si fuera el "capítulo 14" de un libro inexistente.
+
+**Decisión:** la distinción se hace por **convención de nombre de carpeta**, no por forma de contenido — ver `extraction/run.py::discover_sources`. Una carpeta `[Autor_Año]_Titulo` (corchetes) es un libro real; cualquier otra cosa es una categoría, donde cada PDF suelto se convierte en su propio documento independiente (citado por su propio título, no como "capítulo N de la categoría"), y cada subcarpeta se recorre recursivamente igual. Validado contra las 8 carpetas-libro reales y las decenas de carpetas-categoría reales del archivo: ninguna categoría plana terminó fusionada por error.
+
+### Nuevas convenciones de nombre de archivo: `Cap_NN_`/`Sec_NN_` (español)
+
+El propio archivo personal usa su propia convención, ninguna de las anteriores: `Cap_01_Introduccion.pdf`, `Sec_10_Sistemas_de_Recubrimiento.pdf`, con sub-partes (`Cap_05a_..._Parte1.pdf`/`Cap_05b_..._Parte2.pdf`) igual que los libros anteriores. Se agregaron dos patrones nuevos a `NUMERIC_CHAPTER_PATTERNS`, con guardas explícitas contra falsos positivos (`Capacitor`, `Security` empiezan con "cap"/"sec" pero no son capítulos). También aparecieron secciones estructurales nuevas en español completo (`Contenido`, `Tabla_de_Contenido`, `Referencias`, `Glosario`, `Directorio`) y un prefijo centinela `ZZ_` para secciones que van al final del libro (`ZZ_Indice.pdf`) — `structural_label_from_filename` se generalizó para normalizar guiones bajos a espacios antes de buscar coincidencias, en vez de depender de un único estilo de separador.
+
+### Dos mecanismos de deduplicación distintos, porque los duplicados reales no siguen una sola señal
+
+Construir y validar contra el archivo completo expuso duplicados reales de dos tipos distintos:
+
+1. **Marcador de versión explícito** (`_v2`, `_v3`...): un archivo re-exportado o re-escaneado más tarde, con el original dejado por error en la carpeta. `dedupe_versioned_chapters` conserva solo la versión más alta *cuando al menos un archivo del grupo tiene el marcador* — sin él, dos archivos con el mismo número de capítulo (`05a`/`05b`) son sub-partes genuinas, ambas se conservan.
+2. **Contenido idéntico sin ningún marcador en el nombre**: encontrado por hash MD5 sobre el archivo completo (`drop_exact_duplicate_files`), no por convención de nombre — el caso real que lo motivó fue `Sec_11_Miscelaneos.pdf` y `Sec_11b_Miscelaneos_cont.pdf`, donde el nombre sugiere contenido distinto ("_cont" = continuación) pero el contenido es un copy-paste accidental idéntico.
+
+Ningún mecanismo por sí solo cubre ambos casos: el de versión no detectaría el caso 2 (no hay `_vN`), y aplicar hash-dedup ciego sin la guarda de versión explícita arriesgaría borrar sub-partes genuinas que casualmente compartan contenido inicial. Se mantienen como dos pasos independientes en `extraction/chapters.py`.
+
+### Bug real encontrado: TOC con solo enlaces de navegación
+
+Validando contra los 685 PDFs reales, 5 artículos cortos de NACE (formato "artículo independiente", sin convención de capítulo) crasheaban con `IndexError: list index out of range` en `chapter_map_from_toc`. Causa: su TOC embebido no son capítulos, son enlaces de navegación de una página web exportada a PDF (`"NACE Home Page"`, `"Search Site"`) — *todas* las entradas tienen `page == -1` y no hay ningún hermano en el TOC con página real de la cual heredar. El código asumía que si `get_toc()` no está vacío, hay al menos un nivel con páginas resolubles. Corregido devolviendo `{}` (sin mapa de capítulos, igual que un PDF sin TOC) cuando ningún nivel tiene páginas resolubles — con test de regresión.
+
+### Limpieza de "restos de reorganización" encontrados por validación, no por suposición
+
+Tres casos reales de archivos sueltos que resultaron ser restos de una reorganización anterior del propio archivo personal (un libro re-consolidado en una nueva estructura, con los archivos viejos por capítulo dejados atrás sin borrar) — detectados comparando contenido (no solo nombre) contra el libro consolidado, y eliminados tras confirmación explícita: 4 archivos `ch1-4...pdf` (Forsgren), 23 archivos `part N.pdf`/`contents.pdf`/`index.pdf` (Paint and Surface Coatings), y 2 pares de duplicados exactos cruzando categorías distintas. Ver `git log` para el detalle exacto de qué se eliminó y por qué.
+
+### Resultado final tras la integración completa
+
+685 PDFs de entrada → **436 fuentes** en `data/processed/` (8 libros con convención de corchetes + 428 documentos independientes) = exactamente `8 + (457 documentos independientes originales − 29 eliminados por duplicado)`, confirmando que ninguna fuente se perdió ni se sobrescribió por colisión de slug. **20997 páginas** extraídas en total, sin ninguna excepción no recuperable.
+
 ## Pendiente para una siguiente iteración
 
 - Extracción de tablas (`pdfplumber`) como bloques estructurados en vez de texto corrido.

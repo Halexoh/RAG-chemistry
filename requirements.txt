@@ -10,3 +10,4 @@ ollama
 pytest
 jupyter
 ipykernel
+streamlit

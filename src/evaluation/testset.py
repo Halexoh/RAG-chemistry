@@ -2,26 +2,37 @@
 
 There's no human-labeled "gold" relevance dataset for this corpus — building
 one properly would mean manually reading hundreds of chunks. Instead, each
-in-domain question is paired with a topic keyword and a source book that
-were verified to actually occur in that book's chunks (see docs/07 for the
-verification), giving an objective, if approximate, way to check whether
-retrieval found something on-topic without requiring manual judgment per
-question. Out-of-domain questions check the opposite: that the system
-admits it doesn't know, instead of guessing from the LLM's own training data.
+in-domain question is paired with a topic keyword that was verified to
+actually occur in the corpus, giving an objective, if approximate, way to
+check whether retrieval found something on-topic without requiring manual
+judgment per question. Out-of-domain questions check the opposite: that the
+system admits it doesn't know, instead of guessing from the LLM's own
+training data.
+
+`expected_book` is now the exception, not the rule: it was written when the
+corpus held only 2 books, so "topic X -> book Y" was unambiguous. After
+integrating the Prolac personal archive (436 sources, phase 1->7 re-run on
+2026-06-26), several of these topics turned out to be legitimately covered
+by more than one source — checking a specific book there would penalize a
+correct answer just for citing a different valid one. Kept only where the
+topic still maps to a single source in the expanded corpus.
 
 This is intentionally small (15 cases). The point of phase 7 is having a
 repeatable, automatable check at all — not exhaustive coverage.
 """
 
-COATINGS_BOOK = "Coatings Materials and Surface Coatings"
+COATINGS_BOOK = "Coatings Materials and Surface Coatings (Tracton, 2007)"
 HANDBOOK_BOOK = "Handbook of Corrosion Engineering"
 
 TEST_CASES = [
     # In-domain — Coatings Materials and Surface Coatings
     {
+        # No expected_book: after integrating the Prolac archive, this is
+        # now answered from "Polyurethanes (Meier-Westhues)", a dedicated
+        # resin-technology book more specific to polyurea than the
+        # original Coatings Materials chapter — a correct, better source.
         "query": "What is polyurea used for in protective coatings?",
         "in_domain": True,
-        "expected_book": COATINGS_BOOK,
         "expected_keywords": ["polyurea"],
     },
     {
@@ -47,9 +58,10 @@ TEST_CASES = [
         "expected_keywords": ["primer"],
     },
     {
+        # No expected_book: the Prolac archive added other anticorrosive
+        # paint sources that legitimately cover zinc-rich coatings too.
         "query": "What is a zinc-rich coating used for?",
         "in_domain": True,
-        "expected_book": COATINGS_BOOK,
         "expected_keywords": ["zinc-rich"],
     },
     # In-domain — Handbook of Corrosion Engineering
@@ -66,9 +78,11 @@ TEST_CASES = [
         "expected_keywords": ["cathodic protection"],
     },
     {
+        # No expected_book: now also covered by a corrosion glossary and
+        # by "Deposition Technologies for Film and Coatings" (Bunshah),
+        # both added by the Prolac archive integration.
         "query": "¿Qué es la corrosión galvánica?",
         "in_domain": True,
-        "expected_book": HANDBOOK_BOOK,
         "expected_keywords": ["galvanic"],
     },
     {

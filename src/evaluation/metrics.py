@@ -7,7 +7,11 @@ to verify the scoring logic itself is correct.
 
 import re
 
-CITATION_RE = re.compile(r"\[([^,\]]+),\s*([^,\]]+),\s*p\.\s*(\d+)(?:-(\d+))?\]")
+# Book field allows internal commas (book_title_from_bracket_folder produces
+# titles like "Title (Author, 2007)") — only excludes "]" so it still can't
+# cross into a different citation's brackets. Chapter field excludes commas,
+# since that's what anchors where the book field ends.
+CITATION_RE = re.compile(r"\[([^\]]+),\s*([^,\]]+),\s*p\.\s*(\d+)(?:-(\d+))?\]")
 
 # Phrases the model has actually used (see docs/06) when admitting the
 # excerpts don't cover a question, in both languages.
